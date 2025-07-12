@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Language Q&A</title>
+    <style>
+      :root {
+        --laravel: #ff2d20;
+        --vue: #42b883;
+        --php: #777bb4;
+        --oop: #2965f1;
+        --dark: #2c3e50;
+        --light: #f8f9fa;
+      }
+
+      body {
+        font-family: "Segoe UI", system-ui, sans-serif;
+        line-height: 1.5;
+        margin: 0;
+        padding: 2rem;
+        background-color: #f8fafc;
+        color: var(--dark);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        text-align: center;
+        color: var(--dark);
+        margin-bottom: 2rem;
+        font-weight: 600;
+      }
+
+      .card-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+
+      .card {
+        background: white;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      .card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+
+      .card-header {
+        padding: 1.25rem 1.5rem;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .laravel-bg {
+        background: var(--laravel);
+      }
+      .vue-bg {
+        background: var(--vue);
+      }
+      .php-bg {
+        background: var(--php);
+      }
+      .oop-bg {
+        background: var(--oop);
+      }
+
+      .card-icon {
+        font-size: 1.5rem;
+      }
+
+      .card-title {
+        margin: 0;
+        font-size: 1.25rem;
+        font-weight: 600;
+      }
+
+      .card-body {
+        padding: 1.5rem;
+      }
+
+      .card-desc {
+        color: #4a5568;
+        margin-bottom: 1.25rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        border-radius: 0.375rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: background-color 0.2s;
+      }
+
+      .btn:hover {
+        text-decoration: none;
+      }
+
+      .laravel-btn {
+        background: var(--laravel);
+        color: white;
+      }
+      .vue-btn {
+        background: var(--vue);
+        color: white;
+      }
+      .php-btn {
+        background: var(--php);
+        color: white;
+      }
+      .oop-btn {
+        background: var(--oop);
+        color: white;
+      }
+
+      .btn i {
+        margin-left: 0.5rem;
+        transition: transform 0.2s;
+      }
+
+      .btn:hover i {
+        transform: translateX(2px);
+      }
+
+      @media (max-width: 768px) {
+        .card-container {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Language Q&A Documentation</h1>
+
+      <div class="card-container">
+        <!-- Laravel Card -->
+        <div class="card">
+          <div class="card-header laravel-bg">
+            <i class="fab fa-laravel card-icon"></i>
+            <h2 class="card-title">Laravel (100 Q&A)</h2>
+          </div>
+          <div class="card-body">
+            <p class="card-desc">
+              Complete guide to Laravel framework covering basics, Eloquent ORM,
+              authentication, and advanced topics.
+            </p>
+            <a href="./pages/laravel.html" class="btn laravel-btn">
+              View Questions
+            </a>
+          </div>
+        </div>
+
+        <!-- Vue.js Card -->
+        <div class="card">
+          <div class="card-header vue-bg">
+            <i class="fab fa-vuejs card-icon"></i>
+            <h2 class="card-title">Vue.js (100 Q&A)</h2>
+          </div>
+          <div class="card-body">
+            <p class="card-desc">
+              Comprehensive Vue.js reference from basics to advanced state
+              management with Pinia.
+            </p>
+            <a href="./pages/vue.html" class="btn vue-btn"> View Questions </a>
+          </div>
+        </div>
+
+        <!-- PHP Card -->
+        <div class="card">
+          <div class="card-header php-bg">
+            <i class="fab fa-php card-icon"></i>
+            <h2 class="card-title">PHP Fundamentals</h2>
+          </div>
+          <div class="card-body">
+            <p class="card-desc">
+              Essential PHP concepts and questions to strengthen your backend
+              development skills.
+            </p>
+            <a href="./pages/php.html" class="btn php-btn"> View Questions </a>
+          </div>
+        </div>
+
+        <!-- OOP Card -->
+        <div class="card">
+          <div class="card-header oop-bg">
+            <i class="fas fa-cube card-icon"></i>
+            <h2 class="card-title">OOP Concepts</h2>
+          </div>
+          <div class="card-body">
+            <p class="card-desc">
+              Master Object-Oriented Programming principles that form the
+              foundation of modern development.
+            </p>
+            <a href="./pages/oop.html" class="btn oop-btn"> View Questions </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

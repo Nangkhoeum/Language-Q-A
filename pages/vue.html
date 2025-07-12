@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue.js Q&A</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 20px;
+        color: #333;
+      }
+      h1 {
+        color: #2c3e50;
+        border-bottom: 2px solid #42b883;
+        padding-bottom: 10px;
+      }
+      h2 {
+        color: #42b883;
+        margin-top: 30px;
+      }
+      .qa-item {
+        background: #f9f9f9;
+        border-left: 4px solid #42b883;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .qa-item h3 {
+        margin-top: 0;
+        color: #2c3e50;
+      }
+      .back-btn {
+        display: inline-block;
+        background: #0195cf;
+        color: white;
+        padding: 8px 15px;
+        text-decoration: none;
+        border-radius: 4px;
+        margin-bottom: 20px;
+      }
+      code {
+        background: #f0f0f0;
+        padding: 2px 5px;
+        border-radius: 3px;
+        font-family: monospace;
+      }
+      pre {
+        background: #f0f0f0;
+        padding: 10px;
+        border-radius: 5px;
+        overflow-x: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="../index.html" class="back-btn">Back to Main</a>
+    <h1>✅ Vue.js (100 Q&A)</h1>
+
+    <section id="basics">
+      <h2>🔹 Basics (1-20)</h2>
+
+      <div class="qa-item">
+        <h3>1. What is Vue.js?</h3>
+        <p>
+          Vue.js is a JavaScript framework for building interactive web
+          interfaces and single-page applications.
+        </p>
+      </div>
+
+      <div class="qa-item">
+        <h3>2. What is the latest major version of Vue.js?</h3>
+        <p>Vue 3 (as of 2025).</p>
+      </div>
+
+      <div class="qa-item">
+        <h3>3. How do you create a new Vue 3 project using the CLI?</h3>
+        <pre><code>npm init vue@latest</code></pre>
+      </div>
+       <div class="qa-item">
+        <h3>4. What is the data() function used for?</h3>
+        <p>To define reactive variables in a component.</p>
+      </div>
+       <div class="qa-item">
+        <h3>5. What is a component in Vue?</h3>
+        <p>A reusable block of code (template + logic + style).
+      </div>
+       <div class="qa-item">
+        <h3>6. How do you bind data to HTML in Vue?</h3>
+        <p>Using {{ variable }} or v-bind.</p>
+      </div>
+       <div class="qa-item">
+        <h3>7. What is v-model used for?</h3>
+        <p>Two-way binding for form inputs.</p>
+      </div>
+       <div class="qa-item">
+        <h3>8. What is a directive in Vue?</h3>
+        <p>Special tokens in the template starting with v- (e.g., v-if, v-for).</p>
+      </div>
+       <div class="qa-item">
+        <h3>9. What is v-if used for?</h3>
+        <p>To conditionally render an element.</p>
+      </div>
+       <div class="qa-item">
+        <h3>10. What is v-for used for?</h3>
+        <p></p>To loop through arrays or objects in templates.</p>
+      </div>
+       <div class="qa-item">
+        <h3>11. How do you listen to an event in Vue?</h3>
+        <p>Using v-on or @: Example: @click="doSomething".</p>
+      </div>
+       <div class="qa-item">
+        <h3>12. What is a computed property?</h3>
+        <p>A cached property that recalculates when its dependencies change.</p>
+      </div>
+       <div class="qa-item">
+        <h3>13. What is a method in Vue?</h3>
+        <p>A function defined inside the methods object.</p>
+      </div>
+       <div class="qa-item">
+        <h3>14. What is the difference between computed and methods?</h3>
+        <p>Computed is cached; method runs every time it’s called.</p>
+      </div>
+       <div class="qa-item">
+        <h3>15. How do you add styles scoped to a component?</h3>
+        <p>Use "style scoped" in the component. </p>
+      </div>
+       <div class="qa-item">
+        <h3>16. What does v-bind:class do?</h3>
+        <p>Dynamically bind a class name based on conditions.</p>
+      </div>
+       <div class="qa-item">
+        <h3>17. What does v-bind:style do?</h3>
+        <p>Dynamically apply inline styles.</p>
+      </div>
+       <div class="qa-item">
+        <h3>18. What is a watcher?</h3>
+        <p>A function that watches a reactive variable and runs when it changes.</p>
+      </div>
+       <div class="qa-item">
+        <h3>19. How do you pass data from parent to child?</h3>
+        <p>Using props.</p>
+      </div>
+       <div class="qa-item">
+        <h3>20. How does a child component send data to a parent?</h3>
+        <p>By emitting events with $emit.</p>
+      </div>
+    </section>
+
+    <section id="lifecycle">
+      <h2>🔹 Vue Lifecycle Hooks (21-40)</h2>
+
+      <div class="qa-item">
+        <h3>21. What are lifecycle hooks?</h3>
+        <p>
+          Special functions that run during different stages of a component's
+          life.
+        </p>
+      </div>
+            <div class="qa-item">
+                <h3>22. What is beforeCreate()?</h3>
+                <p>Called before data and events are set up.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>23. What is created()?</h3>
+                <p>Called after data and events are set up.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>24. What is beforeMount()?</h3>
+                <p>Runs before the component is mounted to the DOM.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>25. What is mounted()?</h3>
+                <p>Runs after the component is mounted.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>26. What is beforeUpdate()?</h3>
+                <p>Called before the DOM is updated due to reactive data change.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>27. What is updated()?</h3>
+                <p>Called after the DOM has been updated.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>28. What is beforeUnmount() (Vue 3)?</h3>
+                <p>Runs before a component is removed from the DOM.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>29. What is unmounted() (Vue 3)?</h3>
+                <p>Runs after a component has been removed.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>30. Which lifecycle hook is best for fetching API data?</h3>
+                <p><span class="highlight"> mounted()</span>
+                <br>This is the ideal place to fetch API data since the component is fully mounted and ready.</p>
+            </div>
+        </div>
+        
+            <div class="qa-item">
+                <h3>31. What is setup() in Vue 3?</h3>
+                <p>A new entry point for Composition API logic.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>32. Can you use lifecycle hooks inside setup()?</h3>
+                <p>Yes, using onMounted(), onUpdated(), etc.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>33. What is onMounted()?</h3>
+                <p>Composition API alternative to mounted().</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>34. What is onUnmounted()?</h3>
+                <p>Composition API alternative to unmounted().</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>35. What is the difference between Options API and Composition API?</h3>
+                <p>Options API organizes code by options (data, methods), Composition API organizes by feature logic.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>36. What is ref() used for in Vue 3?</h3>
+                <p>To create a reactive variable in Composition API.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>37. What is reactive() used for?</h3>
+                <p>To make an object reactive in Composition API.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>38. What is toRefs()?</h3>
+                <p>Converts reactive properties into individual ref()s.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>39. What is watchEffect()?</h3>
+                <p>A function that automatically re-runs when dependencies change.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>40. What is watch()?</h3>
+                <p>A function to manually watch a specific variable for changes.</p>
+            </div>
+        
+        <div class="category">
+            <h2><span class="category-icon">🧩</span>🔹 Vue Components (41-60)</h2>
+            
+            <div class="qa-item">
+                <h3>41. How do you define a component in Vue 3?</h3>
+                <p>With "script setup" or Options API inside .vue files.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>42. How do you register a global component?</h3>
+                <p>In main.js: <div class="code-block">app.component('MyComponent', MyComponent)</div></p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>43. What is a prop?</h3>
+                <p>A custom attribute for passing data from parent to child.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>44. How do you validate props?</h3>
+                <p>Using <div class="code-block">props: { title: String }</div></p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>45. How to set default props?</h3>
+                <p>With default inside props definition.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>46. What is emits in Vue 3?</h3>
+                <p>Defines the events a component can emit.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>47. How to emit an event from child to parent?</h3>
+                <p><div class="code-block">emit('eventName')</div></p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>48.How to receive an emitted event in parent?</h3>
+                <pre><code><div class="code-block">&lt;ChildComponent @eventName="handler" /&gt;</div></code></pre>
+            </div>
+            
+            <div class="qa-item">
+                <h3>49. How to use slots in Vue?</h3>
+                <p>&lt;slot&gt;&lt;/slot&gt; in child, content passed from parent.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>50. What is a named slot?</h3>
+                <p>Slot with a name: <div class="code-block">&lt;slot name="header"&gt;&lt;/slot&gt;</div></p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>51. What is a scoped slot?</h3>
+                <p>A slot that passes data from child to parent via props.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>52. How to dynamically import a component?</h3>
+                <pre><code>defineAsyncComponent(() => import('./MyComponent.vue'))</code></pre>
+            </div>
+            
+            <div class="qa-item">
+                <h3>53. How to loop over components with v-for?</h3>
+                <p><div class="code-block">&lt;Component v-for="item in list" :key="item.id" :data="item" /&gt;</div></p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>54. What is a dynamic component?</h3>
+                <p>Component rendered based on a variable: <div class="code-block">&lt;component :is="currentView" /&gt;</div></p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>55. What is keep-alive?</h3>
+                <p>Caches components when switching views.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>56. What is v-once?</h3>
+                <p>Renders element once, skips future updates.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>57. What is v-html?</h3>
+                <p>Renders raw HTML, use with caution.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>58. How to handle form submission in Vue?</h3>
+                <p><div class="code-block">&lt;form @submit.prevent="handleSubmit"&gt;</div></p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>59. What is a controlled input?</h3>
+                <p>Input bound with v-model.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>60. How to add a custom directive?</h3>
+                <p><div class="code-block">app.directive('focus', { mounted(el) { el.focus() } })</div></p>
+            </div>
+        </div>
+        
+        <div class="category">
+            <h2><span class="category-icon">🛣️</span>Vue Router & State Management</h2>
+            
+            <div class="qa-item">
+                <h3>What is Vue Router?</h3>
+                <p>Official library for managing page routes in Vue.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>How to install Vue Router?</h3>
+                <p><div class="code-block">npm install vue-router</div></p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>How to define routes?</h3>
+                <p>In routes.js: <div class="code-block">{ path: '/home', component: Home }</div></p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>How to use dynamic routes?</h3>
+                <p><div class="code-block">{ path: '/user/:id', component: User }</div></p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>How to get route params?</h3>
+                <p><div class="code-block">this.$route.params.id</div></p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>How to navigate programmatically?</h3>
+                <div class="code-block">this.$router.push('/home')</div>
+            </div>
+            
+            <div class="qa-item">
+                <h3>What is a named route?</h3>
+                <p>A route with a name: <div class="code-block">{ name: 'Home', path: '/home' }</div></p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>How to use router-link?</h3>
+                <p><div class="code-block">&lt;router-link to="/home"&gt;Home&lt;/router-link&gt;</div></p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>How to set default route?</h3>
+                <p>Use path: '*' or use redirect.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>What is Vuex?</h3>
+                <p>State management library (replaced by Pinia in Vue 3).</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>What is Pinia?</h3>
+                <p>New official state management library in Vue 3.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>How to create a Pinia store?</h3>
+                <p><div class="code-block">defineStore('main', {<br>  state: () => ({ count: 0 })<br>})</div></p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>How to use a store in component?</h3>
+                <p><div class="code-block">const store = useMainStore()</div></p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>How to change state in Pinia?</h3>
+                <p><div class="code-block">store.count++</div> or use actions.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>What is an action in Pinia?</h3>
+                <p>Function that changes the store's state.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>What is a getter in Pinia?</h3>
+                <p>Computed-like function for state.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>Can Pinia stores be split into modules?</h3>
+                <p>Yes, each store is a module.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>How to persist Pinia state?</h3>
+                <p>Use pinia-plugin-persistedstate.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>Can Pinia work with Composition API?</h3>
+                <p>Yes, fully compatible.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>Why choose Pinia over Vuex?</h3>
+                <p>Simpler syntax, better TypeScript support.</p>
+            </div>
+        </div>
+        
+        <div class="category">
+            <h2><span class="category-icon">🌐</span>API, Axios & Best Practices</h2>
+            
+            <div class="qa-item">
+                <h3>What is Axios?</h3>
+                <p>A promise-based HTTP client.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>How to install Axios?</h3>
+                <p><div class="code-block">npm install axios</div></p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>How to make a GET request with Axios?</h3>
+                <p><div class="code-block">axios.get('/api/data')</div></p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>How to POST data with Axios?</h3>
+                <p><div class="code-block">axios.post('/api/save', { name: 'Vue' })</div></p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>Where to call APIs in Vue?</h3>
+                <p>Inside mounted() or onMounted().</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>How to use async/await in Vue?</h3>
+                <p><div class="code-block">const data = await axios.get('/api')</div></p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>How to handle API errors?</h3>
+                <p>Use try...catch.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>What is a loading state?</h3>
+                <p>Boolean flag to show loading indicators during API calls.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>How to create reusable API functions?</h3>
+                <p>In a separate api.js file.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>How to use environment variables in Vue?</h3>
+                <p>Create .env and use <div class="code-block">import.meta.env.VITE_API_URL</div></p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>How to pass props between routes?</h3>
+                <p>Use route props: <div class="code-block">props: true</div></p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>What is a transition in Vue?</h3>
+                <p>Adds animation when element enters/leaves DOM.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>How to add a transition?</h3>
+                <p>Wrap element in <div class="code-block">&lt;transition&gt;&lt;/transition&gt;</div>.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>How to debug Vue apps?</h3>
+                <p>Use Vue Devtools in browser.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>What is a reactive variable?</h3>
+                <p>A variable that updates the DOM when changed.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>What is the difference between ref and reactive?</h3>
+                <p>ref is for primitives; reactive is for objects.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>Can you use Composition API in class-style Vue?</h3>
+                <p>No, Composition API is used in &lt;script setup&gt; or normal setup function.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>What is teleport in Vue 3?</h3>
+                <p>Moves HTML to a different DOM location: <div class="code-block">&lt;teleport to="body"&gt;...&lt;/teleport&gt;</div></p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>What is suspense in Vue 3?</h3>
+                <p>Used to show fallback while async component loads.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h3>How to deploy a Vue app?</h3>
+                <p>Run <span class="highlight">npm run build</span>, then upload the dist/ folder to your server.</p>
+            </div>
+
+
+    </section>
+
+    <!-- Continue with other sections -->
+  </body>
+</html>
