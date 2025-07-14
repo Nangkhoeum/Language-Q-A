@@ -1,123 +1,808 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laravel 100 Q&A Guide</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laravel 100 Q&A</title>
     <style>
+      @page {
+        size: A4;
+        margin: 1in;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #007bff;
+        padding-bottom: 20px;
+      }
+
+      .header h1 {
+        color: #007bff;
+        font-size: 2.5em;
+        margin: 0;
+      }
+
+      .section {
+        margin-bottom: 40px;
+        page-break-inside: avoid;
+      }
+
+      .section-title {
+        background: #007bff;
+        color: white;
+        padding: 10px 15px;
+        margin: 20px 0 15px 0;
+        border-radius: 5px;
+        font-size: 1.3em;
+        font-weight: bold;
+      }
+
+      .qa-item {
+        margin-bottom: 20px;
+        padding: 15px;
+        border-left: 4px solid #007bff;
+        background: #f8f9fa;
+        border-radius: 0 5px 5px 0;
+      }
+
+      .question {
+        font-weight: bold;
+        color: #007bff;
+        margin-bottom: 8px;
+        font-size: 1.1em;
+      }
+
+      .answer {
+        margin-left: 0;
+        color: #555;
+      }
+
+      .code {
+        background: #f4f4f4;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        padding: 8px 12px;
+        font-family: "Courier New", monospace;
+        font-size: 0.9em;
+        margin: 8px 0;
+        word-wrap: break-word;
+      }
+
+      .code-block {
+        background: #2d3748;
+        color: #e2e8f0;
+        border-radius: 5px;
+        padding: 15px;
+        font-family: "Courier New", monospace;
+        font-size: 0.9em;
+        margin: 10px 0;
+        overflow-x: auto;
+        white-space: pre-wrap;
+      }
+
+      .print-button {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        z-index: 1000;
+      }
+
+      .print-button:hover {
+        background: #0056b3;
+      }
+
+      @media print {
+        .print-button {
+          display: none;
+        }
+
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f7fa;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
+          padding: 0;
         }
-        header {
-            background-color: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+        .qa-item {
+          page-break-inside: avoid;
         }
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-        .container {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-        .section {
-            background: white;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-            padding: 1rem;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-        .section h2 {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 0.5rem;
-        }
-        .question {
-            cursor: pointer;
-            padding: 0.8rem;
-            border-bottom: 1px solid #ecf0f1;
-        }
-        .question:hover {
-            background-color: #f9f9f9;
-        }
-        .answer {
-            display: none;
-            padding: 0.8rem;
-            background-color: #fafafa;
-            border-left: 4px solid #3498db;
-        }
-        .answer.active {
-            display: block;
-        }
-        code {
-            background: #34495e;
-            color: #ecf0f1;
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            font-family: 'Courier New', Courier, monospace;
-        }
+      }
+      .back-btn {
+        display: inline-block;
+        background: #0195cf;
+        color: white;
+        padding: 8px 15px;
+        text-decoration: none;
+        border-radius: 4px;
+        margin-bottom: 20px;
+      }
     </style>
-</head>
-<body>
-    <header>
-        <h1>Laravel 100 Q&A Guide</h1>
-        <p>Master Laravel with this comprehensive Q&A resource</p>
-    </header>
-    <div class="container">
-        <div class="section">
-            <h2>Basics (1–20)</h2>
-            <div class="question" onclick="this.nextElementSibling.classList.toggle('active')">1. What is Laravel?</div>
-            <div class="answer">Laravel is a PHP web framework for building web applications using MVC architecture.</div>
-            <div class="question" onclick="this.nextElementSibling.classList.toggle('active')">2. What does MVC stand for?</div>
-            <div class="answer">Model, View, Controller.</div>
-            <div class="question" onclick="this.nextElementSibling.classList.toggle('active')">3. How do you create a new Laravel project?</div>
-            <div class="answer"><code>composer create-project laravel/laravel project-name</code></div>
-            <div class="question" onclick="this.nextElementSibling.classList.toggle('active')">4. What is Artisan in Laravel?</div>
-            <div class="answer">A command-line tool for tasks like generating files or running migrations.</div>
-            <div class="question" onclick="this.nextElementSibling.classList.toggle('active')">5. How to start a local Laravel development server?</div>
-            <div class="answer"><code>php artisan serve</code></div>
-            <div class="question" onclick="this.nextElementSibling.classList.toggle('active')">6. What is a route in Laravel?</div>
-            <div class="answer">A URL path mapping to a controller or closure.</div>
-            <div class="question" onclick="this.nextElementSibling.classList.toggle('active')">7. How do you define a GET route in Laravel?</div>
-            <div class="answer"><code>Route::get('/home', [HomeController::class, 'index']);</code></div>
-            <div class="question" onclick="this.nextElementSibling.classList.toggle('active')">8. What is a controller in Laravel?</div>
-            <div class="answer">A class handling requests and returning responses.</div>
-            <div class="question" onclick="this.nextElementSibling.classList.toggle('active')">9. How to create a controller?</div>
-            <div class="answer"><code>php artisan make:controller UserController</code></div>
-            <div class="question" onclick="this.nextElementSibling.classList.toggle('active')">10. What is a model in Laravel?</div>
-            <div class="answer">A class representing a database table.</div>
-            <div class="question" onclick="this.nextElementSibling.classList.toggle('active')">11. How to create a model?</div>
-            <div class="answer"><code>php artisan make:model Product</code></div>
-            <div class="question" onclick="this.nextElementSibling.classList.toggle('active')">12. What is migration?</div>
-            <div class="answer">A file for creating or modifying database tables.</div>
-            <div class="question" onclick="this.nextElementSibling.classList.toggle('active')">13. How to create a migration?</div>
-            <div class="answer"><code>php artisan make:migration create_products_table</code></div>
-            <div class="question" onclick="this.nextElementSibling.classList.toggle('active')">14. How to run migrations?</div>
-            <div class="answer"><code>php artisan migrate</code></div>
-            <div class="question" onclick="this.nextElementSibling.classList.toggle('active')">15. How to rollback migrations?</div>
-            <div class="answer"><code>php artisan migrate:rollback</code></div>
-            <div class="question" onclick="this.nextElementSibling.classList.toggle('active')">16. What is a middleware?</div>
-            <div class="answer">Filters HTTP requests entering the application.</div>
-            <div class="question" onclick="this.nextElementSibling.classList.toggle('active')">17. How to create middleware?</div>
-            <div class="answer"><code>php artisan make:middleware CheckAdmin</code></div>
-            <div class="question" onclick="this.nextElementSibling.classList.toggle('active')">18. What is CSRF protection?</div>
-            <div class="answer">Protects against cross-site request forgery by verifying a token in forms.</div>
-            <div class="question" onclick="this.nextElementSibling.classList.toggle('active')">19. How to pass data to a view?</div>
-            <div class="answer"><code>return view('home', ['name' => 'John']);</code></div>
-            <div class="question" onclick="this.nextElementSibling.classList.toggle('active')">20. What is the .env file for?</div>
-            <div class="answer">For environment configuration like DB settings.</div>
-        </div>
-        <!-- Add remaining sections (Eloquent ORM, Validation, Auth, and Requests, etc.) similarly -->
-        <!-- For brevity, only Basics section is fully included here; you can expand with the full Q&A -->
+  </head>
+  <body>
+    <a href="../index.html" class="back-btn">Back to Main</a>
+    <button class="print-button" onclick="window.print()">Print PDF</button>
+
+    <div class="header">
+      <h1>✅ Laravel (100 Q&A)</h1>
+      <p style="color: #666; font-style: italic; margin-top: 10px">
+        💡 Pro Tip: Master these fundamentals and you'll be coding Laravel like
+        a wizard! Each question builds your expertise step by step.
+      </p>
     </div>
-</body>
+
+    <div class="section">
+      <div class="section-title">🔹 Basics (1–20)</div>
+
+      <div class="qa-item">
+        <div class="question">1. What is Laravel?</div>
+        <div class="answer">
+          Laravel is a PHP web framework used for building web applications
+          using MVC (Model-View-Controller) architecture.
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">2. What does MVC stand for?</div>
+        <div class="answer">Model, View, Controller.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">3. How do you create a new Laravel project?</div>
+        <div class="answer">
+          <div class="code">
+            composer create-project laravel/laravel project-name
+          </div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">4. What is Artisan in Laravel?</div>
+        <div class="answer">
+          A command-line tool to help with tasks like generating files or
+          running migrations.
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">
+          5. How to start a local Laravel development server?
+        </div>
+        <div class="answer"><div class="code">php artisan serve</div></div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">6. What is a route in Laravel?</div>
+        <div class="answer">
+          A URL path that maps to a controller or closure.
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">7. How do you define a GET route in Laravel?</div>
+        <div class="answer">
+          <div class="code">
+            Route::get('/home', [HomeController::class, 'index']);
+          </div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">8. What is a controller in Laravel?</div>
+        <div class="answer">
+          A class that handles requests and returns responses.
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">9. How to create a controller?</div>
+        <div class="answer">
+          <div class="code">php artisan make:controller UserController</div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">10. What is a model in Laravel?</div>
+        <div class="answer">A class that represents a database table.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">11. How to create a model?</div>
+        <div class="answer">
+          <div class="code">php artisan make:model Product</div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">12. What is migration?</div>
+        <div class="answer">
+          A migration is a file for creating or modifying database tables.
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">13. How to create a migration?</div>
+        <div class="answer">
+          <div class="code">
+            php artisan make:migration create_products_table
+          </div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">14. How to run migrations?</div>
+        <div class="answer"><div class="code">php artisan migrate</div></div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">15. How to rollback migrations?</div>
+        <div class="answer">
+          <div class="code">php artisan migrate:rollback</div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">16. What is a middleware?</div>
+        <div class="answer">
+          Middleware filters HTTP requests entering the application.
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">17. How to create middleware?</div>
+        <div class="answer">
+          <div class="code">php artisan make:middleware CheckAdmin</div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">18. What is CSRF protection?</div>
+        <div class="answer">
+          Protects against cross-site request forgery by verifying a token in
+          forms.
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">19. How to pass data to a view?</div>
+        <div class="answer">
+          <div class="code">return view('home', ['name' => 'John']);</div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">20. What is the .env file for?</div>
+        <div class="answer">
+          For environment configuration like DB settings.
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">🔹 Eloquent ORM (21-40)</div>
+
+      <div class="qa-item">
+        <div class="question">21. What is Eloquent?</div>
+        <div class="answer">
+          Laravel's ORM for interacting with the database using models.
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">22. How to get all records from a model?</div>
+        <div class="answer"><div class="code">User::all();</div></div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">23. How to find a record by ID?</div>
+        <div class="answer"><div class="code">User::find(1);</div></div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">24. How to add a new record?</div>
+        <div class="answer">
+          <div class="code-block">
+            $user = new User; $user->name = 'John'; $user->save();
+          </div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">25. How to update a record?</div>
+        <div class="answer">
+          <div class="code-block">
+            $user = User::find(1); $user->name = 'Doe'; $user->save();
+          </div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">26. How to delete a record?</div>
+        <div class="answer"><div class="code">User::destroy(1);</div></div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">27. What is a relationship?</div>
+        <div class="answer">Links between models (e.g., one-to-many).</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">28. What is hasMany?</div>
+        <div class="answer">One-to-many relationship.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">29. What is belongsTo?</div>
+        <div class="answer">The inverse of hasMany.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">30. Example of hasMany:</div>
+        <div class="answer">
+          <div class="code-block">
+            public function posts() { return $this->hasMany(Post::class); }
+          </div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">31. What is eager loading?</div>
+        <div class="answer">
+          Preloading relationships:
+          <div class="code">User::with('posts')->get();</div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">32. What is a mutator?</div>
+        <div class="answer">Modify a value before saving.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">33. What is an accessor?</div>
+        <div class="answer">Modify a value when getting.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">34. What is a migration rollback?</div>
+        <div class="answer">Reverts the last batch of migrations.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">35. How to soft delete records?</div>
+        <div class="answer">Use SoftDeletes trait in model.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">36. How to get only soft-deleted records?</div>
+        <div class="answer">
+          <div class="code">Model::onlyTrashed()->get();</div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">37. How to restore a soft-deleted record?</div>
+        <div class="answer">
+          <div class="code">Model::withTrashed()->restore();</div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">38. What is $fillable?</div>
+        <div class="answer">List of mass-assignable fields.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">39. What is $guarded?</div>
+        <div class="answer">Fields that are not mass assignable.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">40. How to use query builder?</div>
+        <div class="answer">
+          <div class="code">
+            DB::table('users')->where('name', 'John')->get();
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">🔹 Validation, Auth, and Requests (41–60)</div>
+
+      <div class="qa-item">
+        <div class="question">41. How to validate a form?</div>
+        <div class="answer">
+          <div class="code">$request->validate(['name' => 'required']);</div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">42. How to create a form request?</div>
+        <div class="answer">
+          <div class="code">php artisan make:request StoreUserRequest</div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">43. How to use a form request in controller?</div>
+        <div class="answer">
+          Inject it:
+          <div class="code">function store(StoreUserRequest $request)</div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">44. How to implement authentication?</div>
+        <div class="answer">Use Laravel Breeze or Jetstream.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">45. What is the Auth facade?</div>
+        <div class="answer">Handles login, logout, user auth.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">46. How to get the current user?</div>
+        <div class="answer"><div class="code">Auth::user();</div></div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">47. What is authorization?</div>
+        <div class="answer">Decides who can do what.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">48. How to create a policy?</div>
+        <div class="answer">
+          <div class="code">php artisan make:policy PostPolicy</div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">49. How to apply a policy?</div>
+        <div class="answer">
+          <div class="code">Gate::allows('update-post', $post)</div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">50. How to hash a password?</div>
+        <div class="answer"><div class="code">Hash::make('password')</div></div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">51. How to send a response as JSON?</div>
+        <div class="answer">
+          <div class="code">return response()->json($data);</div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">52. How to upload a file?</div>
+        <div class="answer">
+          <div class="code">$request->file('image')->store('images');</div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">53. What is a resource controller?</div>
+        <div class="answer">Handles common actions like CRUD.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">54. How to make a resource controller?</div>
+        <div class="answer">
+          <div class="code">
+            php artisan make:controller ProductController --resource
+          </div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">55. How to make an API resource?</div>
+        <div class="answer">
+          <div class="code">php artisan make:resource UserResource</div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">56. How to use API resource?</div>
+        <div class="answer">
+          <div class="code">return new UserResource($user);</div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">57. What is the storage directory for?</div>
+        <div class="answer">For saving files and logs.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">58. How to create a custom helper function?</div>
+        <div class="answer">
+          Create a helpers.php and load in composer.json.
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">59. How to use Laravel tinker?</div>
+        <div class="answer"><div class="code">php artisan tinker</div></div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">60. What is sanctum or passport?</div>
+        <div class="answer">Tools for API token authentication.</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">🔹 Advanced Topics (61–80)</div>
+
+      <div class="qa-item">
+        <div class="question">61. What is a service provider?</div>
+        <div class="answer">Registers services into Laravel's container.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">62. What is dependency injection?</div>
+        <div class="answer">
+          Passing objects to a class instead of creating them inside.
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">63. What is event/listener?</div>
+        <div class="answer">
+          Way to handle tasks like sending emails after registration.
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">64. How to create an event?</div>
+        <div class="answer">
+          <div class="code">php artisan make:event UserRegistered</div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">65. How to create a listener?</div>
+        <div class="answer">
+          <div class="code">php artisan make:listener SendWelcomeEmail</div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">66. What is queue?</div>
+        <div class="answer">For delaying heavy jobs like email sending.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">67. How to create a job?</div>
+        <div class="answer">
+          <div class="code">php artisan make:job ProcessOrder</div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">68. How to dispatch a job?</div>
+        <div class="answer">
+          <div class="code">ProcessOrder::dispatch($order);</div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">69. How to send mail in Laravel?</div>
+        <div class="answer">Use Mail facade and mailable classes.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">70. How to schedule a task?</div>
+        <div class="answer">Define in app/Console/Kernel.php</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">71. What is a facade?</div>
+        <div class="answer">Static-like interface to Laravel's services.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">72. What is a singleton service?</div>
+        <div class="answer">
+          A service with only one instance across the app.
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">73. What is Laravel Mix?</div>
+        <div class="answer">A wrapper around Webpack for frontend assets.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">
+          74. What is the difference between get() and first()?
+        </div>
+        <div class="answer">
+          get() returns a collection; first() returns one model.
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">75. What is caching?</div>
+        <div class="answer">Storing data temporarily to improve speed.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">76. How to use Redis with Laravel?</div>
+        <div class="answer">Configure Redis in .env and use Cache facade.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">77. How to paginate records?</div>
+        <div class="answer"><div class="code">Model::paginate(10);</div></div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">78. What is .blade.php?</div>
+        <div class="answer">Laravel's templating engine file.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">79. What is @yield and @section in Blade?</div>
+        <div class="answer">Define and inject content in layouts.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">80. What are Laravel packages?</div>
+        <div class="answer">
+          Reusable components you can install via Composer.
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">🔹 Testing & Debugging (81–100)</div>
+
+      <div class="qa-item">
+        <div class="question">81. What is PHPUnit?</div>
+        <div class="answer">Laravel's default testing framework.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">82. How to create a test?</div>
+        <div class="answer">
+          <div class="code">php artisan make:test ExampleTest</div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">83. How to run tests?</div>
+        <div class="answer"><div class="code">php artisan test</div></div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">84. What is the debug bar?</div>
+        <div class="answer">A Laravel package to help debug.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">85. How to log messages?</div>
+        <div class="answer"><div class="code">Log::info('Message');</div></div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">86. Where are Laravel logs stored?</div>
+        <div class="answer">In storage/logs/laravel.log</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">87. How to throw a 404 error manually?</div>
+        <div class="answer"><div class="code">abort(404);</div></div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">88. What is the app() helper?</div>
+        <div class="answer">Resolves services from the container.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">
+          89. How to bind an interface to implementation?
+        </div>
+        <div class="answer">
+          In AppServiceProvider using $this->app->bind(...)
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">90. How to test database?</div>
+        <div class="answer">Use RefreshDatabase trait in tests.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">91. How to use factories?</div>
+        <div class="answer">
+          Use
+          <div class="code">Model::factory()->create()</div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">92. How to seed database?</div>
+        <div class="answer"><div class="code">php artisan db:seed</div></div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">93. What is .withErrors() used for?</div>
+        <div class="answer">For sending error messages to the view.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">94. How to use flash session messages?</div>
+        <div class="answer">
+          <div class="code">session()->flash('status', 'Saved!');</div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">95. How to check if user is logged in?</div>
+        <div class="answer"><div class="code">Auth::check()</div></div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">96. How to generate a URL?</div>
+        <div class="answer"><div class="code">route('route.name')</div></div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">97. How to define named routes?</div>
+        <div class="answer">
+          <div class="code">
+            Route::get('/', [HomeController::class, 'index'])->name('home');
+          </div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">98. How to group routes with middleware?</div>
+        <div class="answer">
+          Use
+          <div class="code">Route::middleware(['auth'])->group(...)</div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">99. How to use API rate limit?</div>
+        <div class="answer">Add throttle:60,1 middleware.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">100. What is the latest Laravel version?</div>
+        <div class="answer">
+          As of 2025, it's Laravel 11 (check official site for updates)
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Add print functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        // Optional: Auto-print when loaded
+        // window.print();
+      });
+    </script>
+  </body>
 </html>
